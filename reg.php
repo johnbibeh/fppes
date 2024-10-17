@@ -158,7 +158,7 @@
 		                            		<p>Tell us who you are:</p>
 		                        		</div>
 		                        		<div class="form-top-right">
-		                        			<i class="fa fa-user"></i>
+		                        			<!-- <i class="fa fa-user"></i> -->
 		                        		</div>
 		                            </div>
 
@@ -186,32 +186,38 @@
 
 				                       	<div class="form-group col-sm-6">
 				                    		<label class="" for="form-first-name">*Birthday</label>
-				                        	<input type="date" name="bday" placeholder="Birthday" class="form-first-name form-control" id="form-first-name">
+				                        	<input type="date" name="bday" placeholder="Birthday" class="form-first-name form-control" id="bday">
 				                        	
 				                        </div>
 
 										
 				                        <div class="form-group col-sm-6">
 				                        	<label class="" for="form-last-name">*Gender</label>
-				                        	<input type="text" name="gen" placeholder="Gender.." class="form-last-name form-control" id="form-l">
+				                        	<!-- <input type="text" name="gen" placeholder="Gender.." class="form-last-name form-control" id="form-l"> -->
+											 <select  name="gen" class="form-last-name" id="gender" style="width: 100%">
+												<option></option>
+												<option value="male">Male</option>
+												<option value="female">Female</option>
+												
+											 </select>
 				                    	</div>
 
-										<div class="form-group col-sm-4">
+										<div class="form-group col-sm-12">
 				                        	<label class="" for="form-last-name">*Age</label>
-				                        	<input type="text" name="age" placeholder="Age.." class="form-last-name form-control" id="form-l">
+				                        	<input type="text" name="age" placeholder="Age.." class="form-last-name form-control" id="age">
 				                    	</div>
 
 
-										<div class="form-group col-sm-4">
+										<div class="form-group col-sm-4" style="display: none;">
 											<label class="" for="form-first-name">*Weight (pounds)</label>
-											<input type="text" name="weight" placeholder="Weight.." class="form-first-name form-control" id="form-first-name">
+											<input type="text" name="weight" placeholder="Weight.." class="form-first-name form-control" id="form-first-name" value="0">
 										</div>
 
 										
 
-										<div class="form-group col-sm-4">
+										<div class="form-group col-sm-4" style="display: none;">
 											<label class="" for="form-first-name">*Height (cm)</label>
-											<input type="text" name="height" placeholder="Height.." class="form-first-name form-control" id="form-first-name">
+											<input type="text" name="height" placeholder="Height.." class="form-first-name form-control" id="form-first-name" value="0">
 										</div>
 
 
@@ -288,6 +294,24 @@
         <script src="reg_assets/assets/js/jquery.backstretch.min.js"></script>
         <script src="reg_assets/assets/js/retina-1.1.0.min.js"></script>
         <script src="reg_assets/assets/js/scripts.js"></script>
+		<script>
+			$('#bday').on('change', function() {
+			var birthDate = new Date($(this).val()); // Get the birthdate value
+			var today = new Date(); // Get today's date
+			
+			// Calculate the age based on the current date and birth date
+			var age = today.getFullYear() - birthDate.getFullYear();
+			var monthDifference = today.getMonth() - birthDate.getMonth();
+
+			// Adjust the age if the birthdate hasn't passed this year
+			if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+				age--;
+			}
+
+			// Set the calculated age in the age input field
+			$('#age').val(age);
+		});
+		</script>
         
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>

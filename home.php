@@ -2,147 +2,240 @@
 <html lang="en">
 <head>
   <style type="text/css">
-    * {
-      font-family: Century Gothic;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  
 
-    /* Banner Background */
-    .banner-w3layouts {
-      background: url('C:\xampp\htdocs\FPPES\assets\user\bg1.jpg') no-repeat center center;
-      background-size: cover;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px;
-      position: relative;
-    }
+  :root {
+    --baseColor: #f81d03;
+  }
 
-    /* Logo Styling */
-    .navbar-header img {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      height: 150px;
-      width: 150px;
-      object-fit: contain;
-    }
+  /* .align {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  } */
 
-    /* Register Button (Top-Right) */
-    .register-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background-color: #dc3545;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      transition: background-color 0.3s;
-    }
+  /* helpers/grid.css */
 
-    .register-btn:hover {
-      background-color: #c82333;
-    }
+  :root {
+    --gridMaxWidth: 20rem;
+    --gridWidth: 90%;
+  }
 
-    /* Banner Content (Slider and Login Form) */
-    .content-container {
-      display: flex;
-      width: 80%;
-      gap: 30px;
-      align-items: center;
-    }
+  .grid {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--gridMaxWidth);
+    width: var(--gridWidth);
+  }
+  .hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
 
-    .slider {
-      flex: 2;
-    }
+  :root {
+    --iconFill: var(--baseColor);
+  }
 
-    .callbacks_container {
-      height: 400px;
-    }
+  .icons {
+    display: none;
+  }
 
-    .rslides li {
-      display: none;
-      height: 100%;
-      text-align: center;
-      color: white;
-      padding: 40px;
-    }
+  .icon {
+    display: inline-block;
+    fill: var(--iconFill);
+    font-size: 1rem;
+    height: 1em;
+    vertical-align: middle;
+    width: 1em;
+  }
+  :root {
+    --htmlFontSize: 100%;
 
-    .rslides li.active {
-      display: block;
-    }
+    --bodyBackgroundColor: #F5F5F5
+    --bodyColor: var(--baseColor);
+    --bodyFontFamily: 'Open Sans';
+    --bodyFontFamilyFallback: sans-serif;
+    --bodyFontSize: 0.875rem;
+    --bodyFontWeight: 400;
+    --bodyLineHeight: 1.5;
+  }
 
-    /* Login Form Styling */
-    .banner-form-agileinfo {
-      flex: 1;
-      padding: 30px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 8px;
-      text-align: center;
-    }
+  * {
+    box-sizing: inherit;
+  }
 
-    .banner-form-agileinfo input {
-      width: 90%;
-      margin: 10px 0;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
+  html {
+    box-sizing: border-box;
+    font-size: var(--htmlFontSize);
+    height: 100%;
+  }
 
-    /* Features Section (Mission, Vision, and Core Values) */
-    .features {
-      background-color: #f5d1d0; /* Light Purple Background */
-      padding: 80px 20px;
-      color: black;
-      text-align: center;
-      border-radius: 8px;
-      margin: 40px 0;
-    }
+  body {
+    /* background:url('home_assets/images/hpbanner.jpg')no-repeat 0px 0px !important;  */
+    background-color: var(--bodyBackgroundColor);
+    
+    color: var(--bodyColor);
+    font-family: var(--bodyFontFamily), var(--bodyFontFamilyFallback);
+    font-size: var(--bodyFontSize);
+    font-weight: var(--bodyFontWeight);
+    height: 100%;
+    line-height: var(--bodyLineHeight);
+    margin: 0;
+    min-height: 100vh;
+  }
 
-    .features h2 {
-      margin-bottom: 20px;
-      font-size: 36px;
-      text-transform: uppercase;
-    }
+  :root {
+    --anchorColor: #eee;
+  }
 
-    .features .section {
-      margin-bottom: 40px;
-    }
+  a {
+    color: var(--anchorColor);
+    outline: 0;
+    text-decoration: none;
+  }
 
-    .features p {
-      font-size: 18px;
-      margin-bottom: 15px;
-    }
+  a:focus,
+  a:hover {
+    text-decoration: underline;
+  }
 
-    /* Footer */
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
+  :root {
+    --formFieldMargin: 0.875rem;
+  }
 
-    footer .social-icons a {
-      font-size: 18px;
-      margin: 5px;
-      color: white;
-      text-decoration: none;
-    }
+  input {
+    background-image: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    transition: background-color 0.3s;
+  }
 
-    footer .social-icons a:hover {
-      opacity: 0.7;
-    }
+  input[type='submit'] {
+    cursor: pointer;
+  }
+
+  .form {
+    margin: calc(var(--formFieldMargin) * -1);
+  }
+
+  .form input[type='password'],
+  .form input[type='text'],
+  .form input[type='submit'] {
+    width: 100%;
+  }
+
+  .form__field {
+    display: flex;
+    margin: var(--formFieldMargin);
+  }
+
+  .form__input {
+    flex: 1;
+  }
+
+  :root {
+    --loginBorderRadus: 0.25rem;
+    --loginColor: #eee;
+
+    --loginInputBackgroundColor: transparent;
+    --loginInputHoverBackgroundColor: #f81d03;
+
+    --loginLabelBackgroundColor: #363b41;
+
+    --loginSubmitBackgroundColor: #f81d03;
+    --loginSubmitColor: #eee;
+    --loginSubmitHoverBackgroundColor: transparent;
+  }
+
+  .login {
+    color: var(--loginColor);
+  }
+
+  .login label,
+  .login input[type='text'],
+  .login input[type='password'],
+  .login input[type='submit'] {
+    border-radius: var(--loginBorderRadus);
+    padding: 1rem;
+  }
+
+  .login label {
+    background-color: var(--loginInputBackgroundColor);
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    border: 1px solid var(--loginInputHoverBackgroundColor);
+  }
+
+  .login input[type='password'],
+  .login input[type='text'] {
+    background-color: var(--loginInputBackgroundColor);
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border: 1px solid var(--loginInputHoverBackgroundColor);
+    color: #f81d03;
+  }
+
+  .login input[type='password']:focus,
+  .login input[type='password']:hover,
+  .login input[type='text']:focus,
+  .login input[type='text']:hover {
+    /* background-color: var(--loginInputHoverBackgroundColor); */
+  }
+
+  .login input[type='submit'] {
+    background-color: var(--loginSubmitBackgroundColor);
+    color: var(--loginSubmitColor);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .login input[type='submit']:focus,
+  .login input[type='submit']:hover {
+    /* background-color: var(--loginSubmitHoverBackgroundColor); */
+    /* border: 1px solid var(--loginSubmitBackgroundColor); */
+    /* color: var(--loginSubmitBackgroundColor); */
+  }
+
+  /* modules/text.css */
+
+  :root {
+    --paragraphMarginBottom: 1.5rem;
+    --paragraphMarginTop: 1.5rem;
+  }
+
+  p {
+    margin-bottom: var(--paragraphMarginBottom);
+    margin-top: var(--paragraphMarginTop);
+    color: gray;
+  }
+
+  .text--center {
+    text-align: center;
+  }
+
+
+  .error_mess {
+    color:white; !important;
+    text-align: center !important;
+    margin-top: -15px;
+    padding: 10px;
+    background: #C01403;
+    border-radius: 5px;
+
+  }
   </style>
 
   <title>PES | Feeding Program</title>
@@ -153,185 +246,58 @@
   <script src="home_assets/js/jquery-2.1.4.min.js"></script>
 </head>
 
-<body <?php include 'tc-forms/template/notif.php'; ?>>
 
-  <!-- Banner Section -->
-  <div class="banner-w3layouts" id="home">
-    <div class="navbar-header">
-      <img src="assets/user/main-logo.png" alt="Logo">
-    </div>
+<body class="align">
+    <img src="/FPPES/assets/user/main-logo.png" width="300" height="auto">
+<!-- <h2> D&K FURNITURE AND BEDFRAMES </h2> -->
 
-    <a href="reg.php" class="register-btn">
-      <span class="fa fa-user-plus"></span> REGISTER ACCOUNT
-    </a>
+  <div class="grid">
 
-    <div class="content-container">
-      <!-- Slider Section -->
-      <div class="slider">
-        <div class="callbacks_container">
-          <ul class="rslides" id="slider3">
-            <li class="active">
-              <div class="slider_banner_info">
-                <h4>Hunger should kick the can!</h4>
-                <p>Can you imagine a world without hunger?</p>
-              </div>
-            </li>
-            <li>
-              <div class="slider_banner_info">
-                <h4>Don't be rude, donate some food.</h4>
-                <p>Discover a better way of transport.</p>
-              </div>
-            </li>
-            <li>
-              <div class="slider_banner_info">
-                <h4>Take a bite out of hunger.</h4>
-                <p>Can you imagine a world without hunger?</p>
-              </div>
-            </li>
-            <li>
-              <div class="slider_banner_info">
-                <h4>Dude, let's give some food.</h4>
-                <p>Discover a better way of transport.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="user" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </symbol>
+        <symbol id="password" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 1c-3.86 0-7 3.14-7 7v2h-1c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V12c0-1.1-.9-2-2-2h-1V8c0-3.86-3.14-7-7-7zm-1 16c0 .55-.45 1-1 1s-1-.45-1-1v-2c0-.55.45-1 1-1s1 .45 1 1v2zm6 0c0 .55-.45 1-1 1s-1-.45-1-1v-2c0-.55.45-1 1-1s1 .45 1 1v2zm-3-8V8c0-2.76 2.24-5 5-5s5 2.24 5 5v1H5zm5-5c-2.76 0-5 2.24-5 5v1h10V8c0-2.76-2.24-5-5-5z"/>
+        </symbol>
+    </svg>
+
+    <br>
+<br>
+
+<?php session_start(); if(isset($_SESSION['err'])){ echo '<p class="error_mess"> Invalid Credentials </p>'; unset($_SESSION['err']); session_destroy();} ?>
+
+    <form method="POST" class="form login" action="loginprocess.php">
+      <div class="form__field">
+        <label for="login__email"><svg class="icon">
+      <path d="M14 2H2C0.89 2 0 2.9 0 4v8c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 4l-6 3.75L2 6V4l6 3.75L14 4v2zm0 8H2V8l6 3.75L14 8v6z"/>
+        </svg>
+      <span class="hidden">Email Address</span></label>
+        <input id="login__email" type="text" name="email" class="form__input" placeholder="Email Address" required>
       </div>
 
-      <!-- Login Form -->
-      <div class="banner-form-agileinfo">
-        <form action="loginprocess.php" method="post" class="loginform" onsubmit="return validateForm();">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="Email" required />
-
-          <label for="uname">Username:</label>
-          <input type="text" id="uname" name="uname" placeholder="Username" required />
-
-          <label for="pword">Password:</label>
-          <input type="password" id="pword" name="pword" placeholder="Password" required />
-
-          <label for="confirmPword">Confirm Password:</label>
-          <input type="password" id="confirmPword" name="confirmPword" placeholder="Confirm Password" required />
-
-          <input type="submit" value="Get started">
-        </form>
+      <div class="form__field">
+        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
+        <input id="login__username" type="text" name="uname" class="form__input" placeholder="Username" required>
       </div>
-    </div>
+
+      <div class="form__field">
+        <label for="login__password"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#password"></use></svg><span class="hidden">Password</span></label>
+        <input id="login__password" type="password" id="password" name="pword" class="form__input" placeholder="Password" required>
+       </div>
+
+
+      
+      <div class="form__field">
+        <input type="submit" value="Sign In">
+      </div>      
+    </form>
+
+    <br>
+    <p class="text--center">Not registered? <a href="reg.php">Create an account</a></p>
+
   </div>
 
-  <!-- Features Section -->
-<div class="features">
-  <h2>Our Vision, Mission, and Core Values</h2>
 
-  <div class="feature-container">
-    <div class="feature-box">
-      <h3>Our Vision</h3>
-      <p>Every student has access to nutritious meals at school, ensuring their optimal health and well-being.</p>
-    </div>
-
-    <div class="feature-box">
-      <h3>Our Mission</h3>
-      <p>We empower and support school nutrition professionals in advancing the accessibility, quality, and integrity of school nutrition programs.</p>
-    </div>
-
-    <div class="feature-box">
-      <h3>Core Values</h3>
-      <p><strong>Integrity:</strong> We act with honesty and adhere to the highest standards of moral and ethical values.</p>
-      <p><strong>Compassion:</strong> We care about the needs of others and work to alleviate hunger and suffering.</p>
-      <p><strong>Community:</strong> We believe in the power of collaboration and working together for a better future.</p>
-      <p><strong>Excellence:</strong> We strive for excellence in all our efforts to provide the best service possible.</p>
-    </div>
-  </div>
-</div>
-
-<style>
-  /* Features Section Styling */
-  .features {
-    background-color: #f5d1d0; /* Light Purple Background */
-    padding: 60px 20px;
-    text-align: center;
-    color: black;
-    border-radius: 8px;
-  }
-
-  .features h2 {
-    margin-bottom: 40px;
-    font-size: 36px;
-    text-transform: uppercase;
-  }
-
-  /* Feature Container: Horizontal Alignment */
-  .feature-container {
-    display: flex;
-    justify-content: center; /* Align boxes horizontally */
-    gap: 30px; /* Space between boxes */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  }
-
-  /* Individual Feature Box Styling */
-  .feature-box {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%; /* Each box takes 30% of the container */
-    max-width: 300px;
-    min-width: 250px; /* Ensure boxes don't shrink too much */
-
-    /* Center Content with Flexbox */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .feature-box h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-
-  .feature-box p {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  /* Responsive Design for Smaller Screens */
-  @media (max-width: 768px) {
-    .feature-container {
-      flex-direction: column; /* Stack boxes vertically on smaller screens */
-      align-items: center;
-    }
-
-    .feature-box {
-      width: 80%; /* Full width for smaller screens */
-    }
-  }
-</style>
-
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; Phase 7-B Bagong Silang, Brgy 176 Katarungan Rd., Caloocan, Metro Manila | contact@immaculadaconcepcion.edu.ph | +63 948 629 8755 </p>
-    <div class="social-icons">
-      <a href="#" class="fa fa-facebook"></a>
-      <a href="#" class="fa fa-twitter"></a>
-      <a href="#" class="fa fa-instagram"></a>
-    </div>
-  </footer>
-
-  <script src="home_assets/js/responsiveslides.min.js"></script>
-  <script>
-    $(function () {
-      $("#slider3").responsiveSlides({
-        auto: true,
-        speed: 500,
-        timeout: 3000,
-        pager: true,
-        nav: true,
-        namespace: "callbacks",
-      });
-    });
-  </script>
 </body>
 </html>

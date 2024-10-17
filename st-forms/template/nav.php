@@ -14,7 +14,7 @@
                 <ul role="menu" class="dropdown-menu">
                   <li>
                     <div class="user-info">
-                      <div class="user-name"><?= $_SESSION["4040592cec1880aa70936989f05e7c31"] ?></div>
+                      <div class="user-name"><?= $_SESSION["24da566a943e89c762a0e18328fe874a"] ?></div>
                     </div>
                   </li>
                   <li><a href="#"><span class="icon mdi mdi-face"></span> Account</a></li>

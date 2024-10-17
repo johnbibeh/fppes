@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 html, body{
 	margin:0;
 	font-size: 100%;
-	font-family: 'Lato', sans-serif;
+	font-family: century-gothic, sans-serif;
 	background: #fff;
 }
 body a {
@@ -716,7 +716,7 @@ a.navbar-brand span {
 /*-- //Banner-Slider --*/
 .banner-w3layouts {
     position:relative;
-	background:url('../../assets/user/banner5.jpg')no-repeat 0px 0px;
+	background:url('../../home_assets/images/hpbanner.jpg')no-repeat 0px 0px;
 	filter: blur();
 	min-height: 750px;
 	-webkit-background-size:cover;

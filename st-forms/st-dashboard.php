@@ -60,19 +60,19 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");?>
                         <div class="col-12 col-sm-6 col-md-6 gallery-item ">
                             <a href="st-bmi.php" >
                                 <img src="../assets/user/logo1.png" alt="Image 1" class="img-fluid">
-                                <br><div class="label mt-2">BMI</div>
+                                <br><div class="label mt-2">BMI CALCULATOR</div>
                             </a>
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 gallery-item">
                             <a href="link5.html">
                             <img src="../assets/user/diet.png" alt="Image 2" class="img-fluid" >
-                            <br><div class="label mt-2">DIET AND ACTIVITIESe</div>
+                            <br><div class="label mt-2">DIET AND ACTIVITIES</div>
                             </a>
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 gallery-item">
                             <a href="st-sched.php">
                                 <img src="../assets/user/schedule.png" alt="Image 2" class="img-fluid" >
-                                <br><div class="label mt-2">SCHEDULES</div>
+                                <br><div class="label mt-2">FEEDING PROGRAM SCHEDULES</div>
                             </a>
                         </div>
                       
@@ -80,7 +80,7 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");?>
                             <a href="st-stories.php">
                             <img src="../assets/user/logo3.png" alt="Image 2" class="img-fluid" >
                             
-                                <br><div class="label mt-2">ARTICLES</div>
+                                <br><div class="label mt-2">HEALTHY TIPS</div>
                             </a>
                         </div>
                        

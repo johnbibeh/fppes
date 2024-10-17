@@ -67,6 +67,19 @@ function GetCountUser($type, $status){
 
 // STUDENTS
 
+function CheckParentKids($parent_id){
+    global $CN;
+    $query = "SELECT count(*) as kids_count FROM kids_tbl WHERE parent_id = '".$parent_id."' ";
+    $sql = mysqli_query($CN, $query);
+    $row = mysqli_fetch_assoc($sql);
+    
+    // Check if the count is greater than 0
+    if ($row['kids_count'] > 0) {
+        return true; // Return true if there are kids
+    } else {
+        return false; // Return false if no kids
+    }
+}
 
 
 
@@ -77,6 +90,15 @@ function GetBMIbyId($id){
     $list = array();
     global $CN;
     $query = "SELECT * from bmi_tbl where student_id = '".$id."' ";
+    $sql = mysqli_query($CN, $query);
+    while($row = mysqli_fetch_array($sql)){array_push($list, $row);}
+    return $list;
+}
+
+function GetAllStudents(){
+    $list = array();
+    global $CN;
+    $query = "SELECT * from kids_tbl";
     $sql = mysqli_query($CN, $query);
     while($row = mysqli_fetch_array($sql)){array_push($list, $row);}
     return $list;

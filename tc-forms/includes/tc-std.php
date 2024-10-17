@@ -163,13 +163,13 @@ i {
                       <thead>
                         <tr>
                           <!-- <th>STUDENT ID</th> -->
-                          <th>BMI RESULT</th>
-                          <th>FIRSTNAME</th>
-                          <th>MIDDLENAME</th>
-                          <th>LASTNAME</th>
-                          <th>ADDRESS</th>
-                          <th>BIRTHDAY</th>
-                          <th>STATUS </th>
+                          <th>NAME</th>
+                          <th>GRADE</th>
+                          <th>SECTION</th>
+                          <th>AGE </th>
+                          <th>WEIGHT </th>
+                          <th>HEIGHT </th>
+                          <th>BMI RESULT </th>
                           <th>ACTIONS</th>
                         </tr>
                       </thead>
@@ -177,9 +177,9 @@ i {
                         
                       <?php
                       
-                      $studs = GetAccountByUserType('Student');
+                      $studs = GetAllStudents();
                       foreach ($studs as $stud) {
-                          
+                          $name = $stud['fname']. ' '.$stud['mname'].' '.$stud['lname'];
                           $id = $stud['AID'];
                           $stat = $stud["Status"];
                           ?>
@@ -187,95 +187,22 @@ i {
                          
                     
                           
- 
-<?php
-
-    $result = GetBMIbyId($id);
-    
-        foreach ($result as $res) {
-
-        $age = $res["st_age"];
-        $weight = $res["st_weight"];
-        $height = $res["st_height"];
-        $bmi = $res['st_bmi'];
-        $bmistatus = $res["st_status"];
-        
-
-        if($bmistatus == 'Underweight'){
-          $color = 'blue';
-          $class = 'btn-primary';
-        }elseif($bmistatus == 'Normal weight'){
-          $color = 'green';
-          $class = 'btn-success';
-        }elseif($bmistatus == 'Overweight'){
-          $color = 'yellow';
-          $class = 'btn-warning';
-        }else{
-          $color = 'red';
-          $class = 'btn-danger';
-        }
-
-?>
-
- <td> 
-
-
-
-
-                           <button  type="button" title="<strong>BMI Information</strong>" data-container="body" data-toggle="popover" data-html="true" data-placement="bottom" 
-                          data-content="
-                            <strong>Age: </strong> <?= $age ?>
-                            <br>
-                            <strong>Weight:</strong> <?= $weight ?>
-                            <br> 
-                            <strong>Height:</strong> <?= $height ?>
-                            <br>
-                            <strong>BMI:</strong> <?= $bmi ?>
-                            <br>"
-                            class="<?= $class ?> ">
-                            <?= $bmistatus ?>
-                          </button>
-                        </td>
-                        <?php
- }
- ?>
-                        <td><?= $stud["Fname"] ?></td>
-                        <td><?= $stud["Mname"] ?></td>
-                        <td><?= $stud["Lname"] ?></td>
-                        <td><?= $stud["Address"] ?></td>
-                        <td><?= $stud["Bday"] ?></td>
+                        <td><?= $name ?></td>
+                        <td><?= $stud["grade"] ?></td>
+                        <td><?= $stud["section"] ?></td>
+                        <td><?= $stud["age"] ?></td>
+                        <td><?= $stud["height"] ?></td>
+                        <td><?= $stud["weight"] ?></td>
+                        <td>PENDING</td>
+                    
+                        <td>
+                          <a data-id="<?= $stud['id']; ?>" id="compute_bmi" class="text-success fa fa-edit fa-lg">&nbsp </a> 
                           
-                         <?php if ($stat == "Active") {
-                             echo '<td> <span class="btn-success" style="padding: 5px;">' .
-                                 $stat .
-                                 "</span> </td>";
-                         } else {
-                             echo '<td> <span class="btn-danger" style="padding: 5px;">' .
-                                 $stat .
-                                 "</span> </td>";
-                         } ?>
-                          <td class="center">
-                         <!--  <button data-toggle="modal" data-target="#appmo<?= $gets[
-                             "TID"
-                         ] ?>" type="button" class="btn btn-space btn-primary btn-sm md-trigger">Update</button>
-                          -->
                           
-
-
-                          <?php if($stud['Status'] == 'Active'): ?>
-                          <a data-toggle="modal" data-target="#edit<?= $stud['AID'] ?>" class="text-success fa fa-edit fa-lg">&nbsp </a> 
-                          <a data-toggle="modal" data-target="#delmo<?= $stud["AID"] ?>" class="text-danger fa fa-minus-square fa-lg">&nbsp </a> 
-                          
-                          <?php else: ?>
-
-                            <a data-toggle="modal" data-target="#activate<?= $stud["AID"] ?>" class="text-success fa fa-plus-circle fa-lg">&nbsp </a> 
-
-                          <?php endif; ?>
-                        
                         </td>
                         </tr>
                         
-                        <div id="delmo<?= $stud["AID"] ?>" tabindex="-1" role="dialog" class="modal fade">
+                        <div id="delmo<?= $stud["id"] ?>" tabindex="-1" role="dialog" class="modal fade">
                           <div class="modal-dialog modal-sm" >
                             <div class="modal-content">
                               <div class="modal-header">
@@ -300,7 +227,7 @@ i {
                           </div>
                         </div>
 
-                        <div id="activate<?= $stud["AID"] ?>" tabindex="-1" role="dialog" class="modal fade">
+                        <div id="activate<?= $stud["id"] ?>" tabindex="-1" role="dialog" class="modal fade">
                           <div class="modal-dialog modal-sm" >
                             <div class="modal-content">
                               <div class="modal-header">
@@ -325,7 +252,7 @@ i {
                           </div>
                         </div>
 
-                        <div id="edit<?= $stud["AID"] ?>" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-primary">
+                        <div id="edit<?= $stud["id"] ?>" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-primary">
                           <div class="modal-dialog custom-width modal-xl">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -422,6 +349,8 @@ i {
                         </div>
 
 
+
+
                          
                       </div>
 
@@ -431,6 +360,56 @@ i {
                       ?>
                     </tbody>
                   </table>
+
+                    <div id="bmimodal" tabindex="-1" role="dialog" class="modal fade">
+                      <div class="modal-dialog modal-sm" >
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="mdi mdi-close"></span></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="text-center">
+                              <div class="text"><h3> BMI Calculator</h3>
+                              <hr></div>
+                              <div class="form-container">
+                                  <div class="row">
+                                      <!-- First Column: Form -->
+                                      <div class="col-md-12">
+                                      <form id="bmiForm">
+                                            <div class="mb-3">
+                                                <label for="height" class="form-label">Height (cm)</label>
+                                                <input type="text" class="form-control" id="height" name="height">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="weight" class="form-label">Weight (pounds)</label>
+                                                <input type="text" class="form-control" id="weight" name="weight">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary submit-btn">Compute BMI</button>
+                                            <br>
+                                            <br>
+                                            <div class="mb-3">
+                                                <label for="bmi" class="form-label">BMI Result</label>
+                                                <input type="text" class="form-control" id="bmi" name="bmi" readonly>
+                                            </div>
+                                        </form>
+                                      </div>
+                                      <!-- Second Column: Text -->
+                                      
+                                  </div>
+
+                              <div class="xs-mt-10">
+                              <form method="POST" action="" >
+                                <input type="hidden" value="" name="student_id" id="bmi_stud_id">
+                                <button type="button" data-dismiss="modal" class="btn btn-space btn-default">Cancel</button>
+                                <button type="submit" class="btn btn-space btn-success">Save</button>
+                              </form>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer"></div>
+                        </div>
+                      </div>
+                    </div>
 
                     <div id="add-student" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-primary">
                       <div class="modal-dialog custom-width modal-xl">
@@ -559,3 +538,47 @@ i {
                         </div>
                       </div>
                     </div>
+
+                    <script>
+                      
+                      $(document).ready(function(){
+                          $('#compute_bmi').on('click', function(){
+                            console.log(123);
+                            event.preventDefault();
+                            $('#bmimodal').modal('show');
+                            var id = $('#compute_bmi').attr('data-id');
+                            $('#bmi_stud_id').attr('value', id);
+                          });
+                      });
+
+                        document.getElementById('bmiForm').addEventListener('submit', function(event) {
+                            event.preventDefault();
+
+                            // Get values from input fields
+                            const heightCm = parseFloat(document.getElementById('height').value);
+                            const weightPounds = parseFloat(document.getElementById('weight').value);
+
+                            // Convert height to meters and weight to kilograms
+                            const heightM = heightCm / 100;
+                            const weightKg = weightPounds * 0.453592;
+
+                            // Calculate BMI
+                            const bmi = weightKg / (heightM * heightM);
+
+                            // Determine BMI category
+                            let category;
+                            if (bmi < 18.0) {
+                                category = "Underweight";
+                            } else if (bmi < 22.9) {
+                                category = "Normal weight";
+                            } else if (bmi < 24.9) {
+                                category = "Overweight";
+                            } else {
+                                category = "Obese";
+                            }
+
+                            // Display the BMI and category
+                            document.getElementById('bmi').value = BMI: ${bmi.toFixed(2)}, Category: ${category};
+                        });
+                      
+                  </script>

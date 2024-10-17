@@ -1,7 +1,8 @@
 
 <?php 
 error_reporting(0);
-include 'tc-forms/php/app.php'; if(loggedIn()){ header('Location: index.php'); }
+include 'tc-forms/php/app.php'; 
+// if(loggedIn()){ header('Location: index.php'); }
     if(isset($_POST['uname'])){
         $user = checkLogin($_POST['uname'],$_POST['pword'],$_POST['email']);
 
@@ -10,6 +11,7 @@ include 'tc-forms/php/app.php'; if(loggedIn()){ header('Location: index.php'); }
             $u = array_shift($user);
             $_SESSION['b80bb7740288fda1f201890375a60c8f'] = $u['AID'];
             $_SESSION['4040592cec1880aa70936989f05e7c31'] = $u['Email'];
+            $_SESSION['24da566a943e89c762a0e18328fe874a'] = $u['Fname'];
             $_SESSION['14c4b06b824ec593239362517f538b29'] = $u['Username'];
             $_SESSION['usertype'] = $u['Usertype'];
 
@@ -17,15 +19,18 @@ include 'tc-forms/php/app.php'; if(loggedIn()){ header('Location: index.php'); }
 
 
 if($u['Usertype'] == 'Admin'){
-
-
-          header('Location: /FPPES/');
-        
-
-
+  header('Location: /FPPES/');
 }
 elseif ($u['Usertype'] == 'Student') {
-   header('Location: /FPPES/st-forms/st-dashboard.php');
+   $is_have_kids = CheckParentKids($u['AID']);
+
+   if($is_have_kids){
+    header('Location: /FPPES/st-forms/st-dashboard.php');
+   }else{
+    header('Location: /FPPES/st-forms/st-register-kids.php');
+   }
+   
+  
          # code...
 
 }
