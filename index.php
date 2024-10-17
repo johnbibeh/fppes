@@ -14,6 +14,8 @@ header('Location: /FPPES/st-forms/st-dashboard.php');
 elseif ($_SESSION['usertype'] == 'Teacher') {
 header('Location: /FPPES/tc-forms/tc-dashboard.php');
  # code...
+}else{
+  header('Location: /FPPES/home.php');
 }
 
 ?>
